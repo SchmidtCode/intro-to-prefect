@@ -2,19 +2,30 @@
 name = "intro-to-prefect"
 description = "An introductory project to Prefect"
 version = "0.1.0"
+requires-python = ">=3.12"
 authors = [
     { name = "Bryan \"Beege\" Berry", email = "beege@codeseoul.org" }
 ]
 dependencies = [
-    "prefect ~= 2.13.2",
+    "prefect>=3,<4",
     "httpx ~= 0.25.0",
-    "psycopg2-binary ~= 2.9.7"
+    "psycopg2-binary ~= 2.9.7",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pre-commit"
 ]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [project.scripts]
 pipeline = "pipeline.main:main"
